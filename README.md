@@ -85,7 +85,7 @@ El laboratorio incluye los siguientes escenarios documentados individualmente:
 
 Cada escenario incluye evidencias visuales almacenadas en las siguientes carpetas:
 
-- [screenshots SSH](screenshots/SSH/)
+- [SSH – Fuerza Bruta](screenshots/SSH/)
 - [Sudo – Abuso de Privilegios](screenshots/sudo/)  
 - [FIM – Integridad de Archivos](screenshots/fim/)  
 - [Recon – Reconocimiento Interno](screenshots/recon/)
