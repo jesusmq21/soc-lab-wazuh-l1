@@ -81,19 +81,15 @@ El laboratorio incluye los siguientes escenarios documentados individualmente:
 
 ## 📸 Evidencias
 
-Cada escenario incluye evidencias visuales almacenadas en:
+Cada escenario incluye evidencias visuales almacenadas en las siguientes carpetas:
 
-```
-
-screenshots/
-├── ssh/
-├── sudo/
-├── fim/
-└── recon/
-
-```
+- [SSH – Fuerza Bruta](screenshots/ssh/)  
+- [Sudo – Abuso de Privilegios](screenshots/sudo/)  
+- [FIM – Integridad de Archivos](screenshots/fim/)  
+- [Recon – Reconocimiento Interno](screenshots/recon/)
 
 Las capturas muestran **alertas reales generadas y analizadas desde el Wazuh Dashboard**.
+
 
 ---
 
