@@ -2,122 +2,87 @@
 
 ## 📌 Descripción General
 
-Este repositorio documenta un **Laboratorio SOC Nivel 1 (L1)** completamente funcional, diseñado para demostrar capacidades reales de **monitoreo, detección, análisis y documentación de incidentes de seguridad**, utilizando **Wazuh** como plataforma SIEM/XDR.
+Este proyecto documenta la implementación y operación de un **laboratorio SOC Nivel 1** utilizando **Wazuh** como plataforma SIEM/XDR, enfocado en **detección, análisis y documentación de incidentes de seguridad** desde una perspectiva defensiva.
 
-El laboratorio está enfocado estrictamente en una **mentalidad SOC defensiva**, no en pentesting, y replica escenarios reales que un **SOC Analyst L1** enfrenta en entornos productivos.
-
----
-
-## 🎯 Objetivo del Laboratorio
-
-Demostrar de forma práctica y documentada que soy capaz de:
-
-* Implementar una arquitectura SOC básica correcta
-* Integrar endpoints a un SIEM
-* Detectar comportamientos maliciosos comunes
-* Analizar alertas de seguridad
-* Clasificar eventos por severidad
-* Documentar incidentes de forma profesional
+El laboratorio fue diseñado para simular **escenarios reales de monitoreo SOC**, priorizando la visibilidad, la correlación de eventos y el análisis inicial de alertas, **sin enfoque de pentesting**.
 
 ---
 
-## 🧱 Arquitectura del SOC
+## 🎯 Objetivo del Proyecto
 
-El laboratorio utiliza una arquitectura **SOC centralizado con separación de roles**:
+Demostrar competencias prácticas asociadas a un **SOC Analyst Nivel 1**, incluyendo:
+
+* Monitoreo continuo de endpoints.
+* Detección automática de actividades sospechosas.
+* Análisis inicial de alertas de seguridad.
+* Clasificación de eventos y evaluación de impacto.
+* Documentación clara y estructurada de incidentes.
+
+---
+
+## 🧱 Arquitectura del Laboratorio
+
+El laboratorio está compuesto por dos máquinas virtuales claramente separadas:
 
 ### 🔹 SOC Server
 
-* **Sistema:** Ubuntu Server 22.04
+* **Sistema Operativo:** Ubuntu Server 22.04
 * **Componentes:**
 
   * Wazuh Manager
   * Wazuh Indexer (OpenSearch)
   * Wazuh Dashboard
-* **Rol:** Correlación, análisis y visualización de eventos
+* **Rol:** Recolección, correlación y visualización de eventos.
 
 ### 🔹 Endpoint Monitoreado
 
-* **Sistema:** Kali Linux
+* **Sistema Operativo:** Kali Linux
 * **Componentes:**
 
   * Wazuh Agent
-  * SSH habilitado
-  * rsyslog activo
-* **Rol:** Generación de eventos y simulación de actividad maliciosa interna
+  * OpenSSH
+  * rsyslog habilitado
+* **Rol:** Generación de eventos y simulación de comportamiento malicioso interno.
 
-📌 *Importante:* Kali Linux se utiliza **como endpoint**, no como atacante externo.
-
-📷 Diagrama de arquitectura disponible en:
-
-```
-architecture/soc-architecture.png
-```
+📌 **Nota:** El endpoint no se utiliza como máquina atacante, sino como host monitoreado para simular amenazas internas o post-compromiso.
 
 ---
 
-## 🚨 Escenarios de Ataque Simulados
+## 🧪 Escenarios de Seguridad Implementados
 
-Todos los ataques fueron ejecutados de forma controlada para validar la capacidad de detección del SOC.
+El laboratorio incluye los siguientes escenarios documentados:
 
-### 🔴 A1 — Fuerza Bruta SSH
+### 🔸 A1 – Fuerza Bruta SSH
 
-* Múltiples intentos fallidos de autenticación SSH
-* Detección automática por reglas de Wazuh
-* Clasificación de severidad
+* Detección de múltiples intentos fallidos de autenticación.
+* Análisis de logs `/var/log/auth.log`.
+* Clasificación de severidad y evaluación de riesgo.
 
-📄 Documentación detallada:
+### 🔸 A2 – Abuso de Privilegios (sudo)
 
-```
-attacks/A1-ssh-bruteforce.md
-```
+* Identificación de uso indebido o inusual de privilegios elevados.
+* Correlación de eventos `sudo` desde logs del sistema.
+* Análisis de impacto y legitimidad de la acción.
 
----
+### 🔸 A3 – Integridad de Archivos (FIM)
 
-### 🔴 A2 — Abuso de Privilegios (sudo)
+* Monitoreo de cambios en archivos críticos.
+* Detección de creación, modificación y eliminación de archivos.
+* Evaluación de persistencia o manipulación no autorizada.
 
-* Uso indebido de comandos con privilegios elevados
-* Registro en logs de autenticación
-* Alerta correlacionada por Wazuh
+### 🔸 A4 – Reconocimiento Interno
 
-📄 Documentación detallada:
+* Detección de comandos de enumeración del sistema y red.
+* Identificación de comportamiento post-compromiso.
+* Correlación temporal de eventos sospechosos.
 
-```
-attacks/A2-sudo-abuse.md
-```
-
----
-
-### 🔴 A3 — Integridad de Archivos (FIM)
-
-* Modificación de archivos críticos del sistema
-* Detección por File Integrity Monitoring
-* Registro de cambios y alertas
-
-📄 Documentación detallada:
-
-```
-attacks/A3-file-integrity.md
-```
+📁 La documentación detallada de cada escenario se encuentra en el directorio `attacks/`.
 
 ---
 
-### 🔴 A4 — Reconocimiento Interno
+## 📸 Evidencias
 
-* Ejecución de comandos de reconocimiento del sistema
-* Identificación de comportamiento sospechoso
-* Detección como actividad potencialmente maliciosa
-
-📄 Documentación detallada:
-
-```
-attacks/A4-internal-recon.md
-```
-
----
-
-## 🖼️ Evidencias
-
-Las capturas de pantalla de cada escenario se encuentran organizadas por tipo de ataque:
+Cada escenario incluye evidencias visuales almacenadas en:
 
 ```
 screenshots/
@@ -127,66 +92,62 @@ screenshots/
 └── recon/
 ```
 
-Incluyen:
-
-* Comandos ejecutados
-* Alertas en Wazuh Dashboard
-* Detalles de eventos
+Las capturas muestran alertas reales generadas y analizadas desde el **Wazuh Dashboard**.
 
 ---
 
-## 🧠 Análisis SOC
+## 🧠 Análisis SOC (Nivel 1)
 
-El análisis de los eventos detectados, su clasificación y conclusiones se documentan en:
+Este laboratorio enfatiza el rol defensivo del analista SOC, enfocándose en:
+
+* Identificación temprana de amenazas.
+* Análisis contextual de eventos.
+* Diferenciación entre actividad legítima y maliciosa.
+* Propuesta de acciones de mitigación y escalamiento.
+
+El análisis consolidado se encuentra documentado en:
 
 ```
 notes/soc-analysis.md
 ```
 
-Incluye:
-
-* Evaluación de severidad
-* Impacto potencial
-* Acciones recomendadas
-* Escalamiento teórico
-
 ---
 
-## 🧰 Tecnologías Utilizadas
+## 🛠️ Tecnologías Utilizadas
 
-* Wazuh
+* Wazuh (Manager, Agent, Dashboard)
 * OpenSearch
-* Linux (Ubuntu Server, Kali Linux)
+* Ubuntu Server 22.04
+* Kali Linux
+* Linux Logging (auth.log, syslog)
 * SSH
 * rsyslog
-* File Integrity Monitoring (FIM)
-* VirtualBox / VMware
 
 ---
 
 ## 💼 Valor Profesional
 
-Este laboratorio demuestra habilidades clave para un **SOC Analyst Nivel 1**:
+Este laboratorio demuestra habilidades prácticas clave para posiciones como:
 
-* Pensamiento defensivo
-* Comprensión de logs
-* Análisis inicial de incidentes
-* Documentación clara
-* Uso real de SIEM
+* SOC Analyst Nivel 1
+* Analista de Seguridad Junior
+* Blue Team Trainee
 
-📌 No se utilizaron exploits, Metasploit ni técnicas ofensivas avanzadas, ya que el enfoque es **detección y análisis**, no explotación.
+El proyecto evidencia capacidad para **detectar, analizar y documentar incidentes reales**, siguiendo buenas prácticas de operación SOC.
+
+---
+
+## 📎 Notas Finales
+
+* No se utilizaron herramientas de explotación (Metasploit, exploits, etc.).
+* No se realizó escaneo agresivo de red.
+* El enfoque es **100 % defensivo y orientado a SOC**.
 
 ---
 
 ## 👤 Autor
 
 **Jesús Eduardo Machuca Quintero**
-SOC Analyst L1 (en formación)
-
----
-
-## 📎 Nota Final
-
-Este laboratorio fue construido con fines educativos y profesionales, simulando escenarios reales de un entorno SOC.
-
-
+Laboratorio SOC Nivel 1 – Wazuh
+Enero 2026
+Solo dime qué sigue. 💼🛡️
