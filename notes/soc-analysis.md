@@ -17,7 +17,7 @@ El laboratorio consta de:
   * SOC: análisis y monitorización
   * Endpoint: generador de eventos simulando actividad maliciosa
 
-![Arquitectura SOC](architecture/soc-architecture.png)
+[Arquitectura SOC](architecture/soc-architecture.png)
 
 ---
 
