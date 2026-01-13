@@ -111,6 +111,3 @@ No se evidencia compromiso del sistema, pero el evento requiere **validación co
 * ✅ Alerta visible y analizable en el Wazuh Dashboard.
 * ✅ Escenario documentado con enfoque SOC defensivo.
 
----
-y seguimos completando el laboratorio 🔍🛡️
-
