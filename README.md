@@ -1,3 +1,5 @@
+[screenshots SSH](screenshots/ssh/)
+
 # 🛡️ Laboratorio SOC Nivel 1 con Wazuh
 
 ## 📌 Descripción General
