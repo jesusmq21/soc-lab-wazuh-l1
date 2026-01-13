@@ -1,7 +1,7 @@
 # 📊 Laboratorio SOC Nivel 1 — Wazuh
 
-**Autor:** Jesús Eduardo Machuca Quintero
-**Fecha:** 12/01/2026
+**Autor:** Jesús Eduardo Machuca Quintero  
+**Fecha:** 12/01/2026  
 **Objetivo:** Demostrar habilidades de monitoreo, detección y análisis de incidentes desde un SOC L1 usando Wazuh.
 
 ---
@@ -10,11 +10,10 @@
 
 El laboratorio consta de:
 
-* **SOC Server:** Ubuntu Server 22.04 con Wazuh Manager y Dashboard
-* **Endpoint monitoreado:** Kali Linux con Wazuh Agent
-* **Flujo de logs:** Autenticación, sudo, integridad de archivos y actividad de red
+* **SOC Server:** Ubuntu Server 22.04 con Wazuh Manager y Dashboard  
+* **Endpoint monitoreado:** Kali Linux con Wazuh Agent  
+* **Flujo de logs:** Autenticación, sudo, integridad de archivos y actividad de red  
 * **Separación de roles:**
-
   * SOC: análisis y monitorización
   * Endpoint: generador de eventos simulando actividad maliciosa
 
@@ -24,54 +23,54 @@ El laboratorio consta de:
 
 ## ⚡ Ataques Simulados (Escenarios A1–A4)
 
-* [**A1 – Fuerza Bruta SSH**](#a1---fuerza-bruta-ssh)
-* [**A2 – Abuso de privilegios (sudo)**](#a2---abuso-de-privilegios-sudo)
-* [**A3 – Integridad de archivos (FIM)**](#a3---integridad-de-archivos-fim)
-* [**A4 – Reconocimiento interno**](#a4---reconocimiento-interno)
+* [**A1 – Fuerza Bruta SSH**](attacks/A1-ssh-bruteforce.md)  
+* [**A2 – Abuso de privilegios (sudo)**](attacks/A2-sudo-abuse.md)  
+* [**A3 – Integridad de archivos (FIM)**](attacks/A3-file-integrity.md)  
+* [**A4 – Reconocimiento interno**](attacks/A4-internal-recon.md)
 
 ---
 
 ### **A1 – Fuerza Bruta SSH**
 
-* **Objetivo:** Detectar múltiples intentos fallidos de autenticación SSH
-* **Evidencia:** `screenshots/ssh/`
-* **Análisis SOC:** IP interna intentando acceso repetido, alerta media/alta
-* **Acciones recomendadas:** Monitoreo continuo, posible bloqueo de IP, revisión de políticas SSH
+* **Objetivo:** Detectar múltiples intentos fallidos de autenticación SSH  
+* **Evidencia:** [screenshots/ssh](https://github.com/jesusmq21/soc-lab-wazuh-l1/tree/main/screenshots/SSH)  
+* **Análisis SOC:** IP interna intentando acceso repetido, alerta media/alta  
+* **Acciones recomendadas:** Monitoreo continuo, posible bloqueo de IP, revisión de políticas SSH  
 
-**Documentación completa del ataque:** `attacks/A1-ssh-bruteforce.md`
+**Documentación completa del ataque:** [A1 – Fuerza Bruta SSH](attacks/A1-ssh-bruteforce.md)
 
 ---
 
 ### **A2 – Abuso de privilegios (sudo)**
 
-* **Objetivo:** Detectar uso indebido de privilegios
-* **Evidencia:** `screenshots/sudo/`
-* **Análisis SOC:** Usuario intentando escalar privilegios sin éxito, alerta media
-* **Acciones recomendadas:** Revisar sudoers, monitoreo de usuario, escalamiento si persiste
+* **Objetivo:** Detectar uso indebido de privilegios  
+* **Evidencia:** [screenshots/sudo](https://github.com/jesusmq21/soc-lab-wazuh-l1/tree/main/screenshots/sudo)  
+* **Análisis SOC:** Usuario intentando escalar privilegios sin éxito, alerta media  
+* **Acciones recomendadas:** Revisar sudoers, monitoreo de usuario, escalamiento si persiste  
 
-**Documentación completa del ataque:** `attacks/A2-sudo-abuse.md`
+**Documentación completa del ataque:** [A2 – Abuso de privilegios](attacks/A2-sudo-abuse.md)
 
 ---
 
 ### **A3 – Integridad de archivos (FIM)**
 
-* **Objetivo:** Detectar cambios no autorizados en archivos críticos
-* **Evidencia:** `screenshots/fim/`
-* **Análisis SOC:** Archivos críticos modificados, alerta alta
-* **Acciones recomendadas:** Validar cambios, notificar admin, incrementar monitoreo
+* **Objetivo:** Detectar cambios no autorizados en archivos críticos  
+* **Evidencia:** [screenshots/fim](https://github.com/jesusmq21/soc-lab-wazuh-l1/tree/main/screenshots/fim)  
+* **Análisis SOC:** Archivos críticos modificados, alerta alta  
+* **Acciones recomendadas:** Validar cambios, notificar admin, incrementar monitoreo  
 
-**Documentación completa del ataque:** `attacks/A3-file-integrity.md`
+**Documentación completa del ataque:** [A3 – Integridad de archivos](attacks/A3-file-integrity.md)
 
 ---
 
 ### **A4 – Reconocimiento interno**
 
-* **Objetivo:** Detectar escaneo de puertos y reconocimiento interno
-* **Evidencia:** `screenshots/recon/`
-* **Análisis SOC:** Actividad de descubrimiento de red, alerta media
-* **Acciones recomendadas:** Registrar IP y patrón, monitoreo continuo, ajustar alertas
+* **Objetivo:** Detectar escaneo de puertos y reconocimiento interno  
+* **Evidencia:** [screenshots/recon](https://github.com/jesusmq21/soc-lab-wazuh-l1/tree/main/screenshots/recon)  
+* **Análisis SOC:** Actividad de descubrimiento de red, alerta media  
+* **Acciones recomendadas:** Registrar IP y patrón, monitoreo continuo, ajustar alertas  
 
-**Documentación completa del ataque:** `attacks/A4-internal-recon.md`
+**Documentación completa del ataque:** [A4 – Reconocimiento interno](attacks/A4-internal-recon.md)
 
 ---
 
@@ -79,12 +78,12 @@ El laboratorio consta de:
 
 Este laboratorio enfatiza el **rol defensivo del analista SOC**, enfocándose en:
 
-* Identificación temprana de amenazas
-* Análisis contextual de eventos
-* Diferenciación entre actividad legítima y maliciosa
-* Propuesta de acciones de mitigación y escalamiento
+* Identificación temprana de amenazas  
+* Análisis contextual de eventos  
+* Diferenciación entre actividad legítima y maliciosa  
+* Propuesta de acciones de mitigación y escalamiento  
 
-El análisis consolidado se encuentra documentado en: [`notes/soc-analysis.md`](notes/soc-analysis.md)
+El análisis consolidado se encuentra documentado en: [soc-analysis.md](notes/soc-analysis.md)
 
 ---
 
@@ -92,30 +91,18 @@ El análisis consolidado se encuentra documentado en: [`notes/soc-analysis.md`](
 
 Capturas y registros de cada escenario:
 
-```
-screenshots/
-├── ssh/        -> Fuerza Bruta SSH (A1)
-├── sudo/       -> Abuso de privilegios (A2)
-├── fim/        -> Integridad de archivos (A3)
-└── recon/      -> Reconocimiento interno (A4)
-```
+* [ssh/](https://github.com/jesusmq21/soc-lab-wazuh-l1/tree/main/screenshots/SSH) — Fuerza Bruta SSH (A1)  
+* [sudo/](https://github.com/jesusmq21/soc-lab-wazuh-l1/tree/main/screenshots/sudo) — Abuso de privilegios (A2)  
+* [fim/](https://github.com/jesusmq21/soc-lab-wazuh-l1/tree/main/screenshots/fim) — Integridad de archivos (A3)  
+* [recon/](https://github.com/jesusmq21/soc-lab-wazuh-l1/tree/main/screenshots/recon) — Reconocimiento interno (A4)
 
 ---
 
 ## ✅ Conclusiones
 
-* Todas las alertas fueron detectadas y documentadas correctamente.
-* No se realizaron acciones ofensivas, manteniendo enfoque SOC defensivo.
-* Este laboratorio **demuestra competencia para un SOC Analyst L1**, incluyendo:
-
-  * Configuración de Wazuh
-  * Monitoreo y análisis de eventos
-  * Documentación profesional de incidentes
-
----
-
-> **Nota:** Este README está optimizado para mostrar a reclutadores y equipos de SOC la capacidad de configurar, monitorear y analizar incidentes en un entorno controlado.
-> Todos los enlaces internos permiten acceder rápidamente a los escenarios y análisis completos, simulando un **portafolio profesional real**.
-
----
-
+* Todas las alertas fueron detectadas y documentadas correctamente.  
+* No se realizaron acciones ofensivas, manteniendo enfoque SOC defensivo.  
+* Este laboratorio **demuestra competencia para un SOC Analyst L1**, incluyendo:  
+  * Configuración de Wazuh  
+  * Monitoreo y análisis de eventos  
+  * Documentación profesional de incidentes  
